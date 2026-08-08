@@ -1,0 +1,4 @@
+interface:
+  display_name: "Accessibility Pass"
+  short_description: "Improve practical web accessibility"
+  default_prompt: "Use $accessibility-pass to audit and improve this interface for accessible use."

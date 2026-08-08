@@ -1,0 +1,4 @@
+interface:
+  display_name: "Bug Hunt"
+  short_description: "Reproduce, isolate, and fix software bugs"
+  default_prompt: "Use $bug-hunt to reproduce, isolate, and fix this bug with a regression check."

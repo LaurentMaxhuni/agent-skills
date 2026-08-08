@@ -1,0 +1,4 @@
+interface:
+  display_name: "Frontend Audit"
+  short_description: "Audit frontend quality and maintainability"
+  default_prompt: "Use $frontend-audit to inspect this frontend and report prioritized, evidence-backed findings."

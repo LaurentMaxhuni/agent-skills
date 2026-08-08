@@ -1,0 +1,4 @@
+interface:
+  display_name: "Refactor"
+  short_description: "Restructure code with controlled risk"
+  default_prompt: "Use $refactor to improve this code structure while preserving behavior and verifying the change."

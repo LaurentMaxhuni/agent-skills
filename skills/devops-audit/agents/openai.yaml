@@ -1,0 +1,4 @@
+interface:
+  display_name: "DevOps Audit"
+  short_description: "Audit delivery, infrastructure, and operations"
+  default_prompt: "Use $devops-audit to assess this delivery setup and prioritize actionable operational improvements."

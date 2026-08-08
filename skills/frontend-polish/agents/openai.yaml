@@ -1,0 +1,4 @@
+interface:
+  display_name: "Frontend Polish"
+  short_description: "Refine frontend visuals and interactions"
+  default_prompt: "Use $frontend-polish to refine this interface into a cohesive, production-ready experience."

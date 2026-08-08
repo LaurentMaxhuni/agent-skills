@@ -1,0 +1,4 @@
+interface:
+  display_name: "Responsive Fixer"
+  short_description: "Fix responsive layouts across viewports"
+  default_prompt: "Use $responsive-fixer to diagnose and fix this interface across mobile, tablet, and desktop."

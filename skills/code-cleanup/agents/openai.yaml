@@ -1,0 +1,4 @@
+interface:
+  display_name: "Code Cleanup"
+  short_description: "Remove clutter without changing behavior"
+  default_prompt: "Use $code-cleanup to simplify this code while preserving its observable behavior."

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Database Review"
+  short_description: "Review schemas, queries, and data safety"
+  default_prompt: "Use $database-review to review this database change for correctness, performance, and operational safety."
