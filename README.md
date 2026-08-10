@@ -8,6 +8,8 @@ A focused collection of reusable skills for improving software quality. Each ski
 
 | Skill | Use it for |
 | --- | --- |
+| [`portfolio-maker`](skills/portfolio-maker/SKILL.md) | Building a faithful portfolio from a user's content, assets, and goals |
+| [`award-winning-frontend`](skills/award-winning-frontend/SKILL.md) | Creating high-craft frontends with typography, 3D, and purposeful motion |
 | [`frontend-polish`](skills/frontend-polish/SKILL.md) | Refining visual hierarchy, consistency, interaction states, and perceived quality |
 | [`frontend-audit`](skills/frontend-audit/SKILL.md) | Producing an evidence-backed frontend quality review without silently changing code |
 | [`responsive-fixer`](skills/responsive-fixer/SKILL.md) | Diagnosing and fixing layout failures across viewport sizes and input modes |

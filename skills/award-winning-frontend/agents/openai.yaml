@@ -1,0 +1,4 @@
+interface:
+  display_name: "Award-Winning Frontend"
+  short_description: "Build cinematic, motion-rich frontend experiences"
+  default_prompt: "Use $award-winning-frontend to build this frontend with bold art direction, refined typography, purposeful 3D, parallax, and scroll-driven motion."

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Portfolio Maker"
+  short_description: "Turn your story into a faithful portfolio"
+  default_prompt: "Use $portfolio-maker to ask me for the essentials, then build a polished portfolio without rewriting my content or changing my intent."
