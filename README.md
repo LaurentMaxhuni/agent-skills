@@ -1,6 +1,6 @@
 # Agent Skills
 
-[![skills.sh](https://skills.sh/b/LaurentMaxhuni/agent-skills)](https://skills.sh/LaurentMaxhuni/agent-skills)
+[![skills.sh](https://skills.sh/b/laurentmaxhuni/agent-skills)](https://skills.sh/laurentmaxhuni/agent-skills)
 
 A focused collection of reusable skills for improving software quality. Each skill is intentionally narrow: it defines a practical workflow, hard scope and safety boundaries, enforceable verification gates, and a concise evidence-backed handoff format without prescribing a specific framework or toolchain.
 
@@ -24,7 +24,19 @@ A focused collection of reusable skills for improving software quality. Each ski
 
 ## Install
 
-Copy or symlink any directory under `skills/` into the skills directory used by your agent. Keep the directory name unchanged so its metadata and invocation name remain aligned.
+Install all skills with the skills CLI:
+
+```bash
+npx skills add laurentmaxhuni/agent-skills
+```
+
+Or install a single skill:
+
+```bash
+npx skills add laurentmaxhuni/agent-skills/<skill-name>
+```
+
+Alternatively, copy or symlink any directory under `skills/` into the skills directory used by your agent. Keep the directory name unchanged so its metadata and invocation name remain aligned.
 
 For Codex, a typical user-level destination is:
 
