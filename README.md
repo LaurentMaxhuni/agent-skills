@@ -2,7 +2,7 @@
 
 [![skills.sh](https://skills.sh/b/LaurentMaxhuni/agent-skills)](https://skills.sh/LaurentMaxhuni/agent-skills)
 
-A focused collection of reusable skills for improving software quality. Each skill is intentionally narrow: it defines a practical workflow, safety boundaries, verification expectations, and a concise handoff format without prescribing a specific framework or toolchain.
+A focused collection of reusable skills for improving software quality. Each skill is intentionally narrow: it defines a practical workflow, hard scope and safety boundaries, enforceable verification gates, and a concise evidence-backed handoff format without prescribing a specific framework or toolchain.
 
 ## Skills
 
@@ -10,6 +10,8 @@ A focused collection of reusable skills for improving software quality. Each ski
 | --- | --- |
 | [`portfolio-maker`](skills/portfolio-maker/SKILL.md) | Building a faithful portfolio from a user's content, assets, and goals |
 | [`award-winning-frontend`](skills/award-winning-frontend/SKILL.md) | Creating high-craft frontends with typography, 3D, and purposeful motion |
+| [`anti-ai-slop`](skills/anti-ai-slop/SKILL.md) | Removing generic AI patterns from frontend design |
+| [`carousel-maker`](skills/carousel-maker/SKILL.md) | Building functional Instagram-style post carousels in HTML, CSS, and JavaScript |
 | [`frontend-polish`](skills/frontend-polish/SKILL.md) | Refining visual hierarchy, consistency, interaction states, and perceived quality |
 | [`frontend-audit`](skills/frontend-audit/SKILL.md) | Producing an evidence-backed frontend quality review without silently changing code |
 | [`responsive-fixer`](skills/responsive-fixer/SKILL.md) | Diagnosing and fixing layout failures across viewport sizes and input modes |
@@ -48,4 +50,5 @@ Skills may also be selected automatically when a request matches the description
 - Separate evidence from inference and prioritize root causes.
 - Make the smallest coherent change that satisfies the request.
 - Verify in proportion to risk and report any validation gaps honestly.
+- Skills carry hard gates: mandated checks are binding, and skipped or failed checks are reported verbatim, never hidden.
 - Treat audits as read-only unless the user also asks for implementation.

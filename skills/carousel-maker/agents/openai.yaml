@@ -1,0 +1,4 @@
+interface:
+  display_name: "Carousel Maker"
+  short_description: "Build high-quality, non-boxy Instagram carousels"
+  default_prompt: "Use $carousel-maker to build a production-quality, original Instagram-style carousel UI in HTML, CSS, and JavaScript. Make the entire interface feel designed, use provided logos/assets exactly, and source reputable web assets instead of inventing low-quality SVGs."

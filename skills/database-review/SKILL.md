@@ -7,6 +7,19 @@ description: Review relational database schemas, migrations, queries, transactio
 
 Review the database as a stateful production system, not only as static SQL. Do not execute mutations against a live or unidentified database.
 
+## Hard rules
+
+These requirements bind every run of this skill. Adapt a rule only when it is genuinely impossible to satisfy, and report the adaptation and its reason in the handoff. Silently skipping a rule is a failed task.
+
+- Never execute mutations, migrations, or destructive statements against a live or unidentified database. Use isolated or disposable environments only, and say which environment produced any plan or measurement.
+- Treat destructive or irreversible operations as blocked until scope, safeguards, and rollback are explicit and agreed.
+- Separate confirmed defects from risks requiring production metrics or execution plans. Label assumptions when production facts are unavailable.
+- Support every finding with evidence at file and line where possible. A statement without location and failure scenario is a question to resolve, not a finding.
+
+## Stop and ask
+
+Stop before implementing any destructive or irreversible migration step whose safeguards are unspecified. Ask when table sizes, traffic patterns, tenancy, or uptime expectations are unknown and the recommendation would change materially depending on them.
+
 ## Establish context
 
 1. Read repository instructions and identify the database engine and version, ORM or migration tool, schema source of truth, and deployment model.
@@ -44,8 +57,8 @@ Check lock duration, table rewrites, validation strategy, mixed-version deployme
 
 ## Report findings
 
-For every finding, include severity, exact location, failure scenario, evidence, and a concrete remediation. Separate confirmed defects from risks requiring production metrics or an execution plan. Prioritize integrity and availability before micro-optimization.
+For every finding, include severity, exact location, failure scenario, evidence, and a concrete remediation. Separate confirmed defects from risks requiring production metrics or an execution plan. Prioritize integrity and availability before micro-optimization. Structure the final report in four labeled parts: (1) Findings ordered by severity, each with location, failure scenario, evidence, and remediation. (2) Evidence: checks, plans, and measurements actually performed, and the environment that produced them. (3) Risks and unknowns: what needs production metrics or an execution plan to confirm. (4) Assumptions: every production fact assumed instead of verified.
 
 ## Verify
 
-Use isolated or disposable environments for execution plans and migration tests. Run schema checks, database tests, and relevant application tests. State which engine, data scale, and concurrency conditions were not verified.
+Use isolated or disposable environments for execution plans and migration tests. Run schema checks, database tests, and relevant application tests. State which engine, data scale, and concurrency conditions were not verified. Verification is a completion gate: record the actual outcome of every check and report failures verbatim.

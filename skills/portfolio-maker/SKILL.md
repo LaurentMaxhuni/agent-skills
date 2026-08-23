@@ -7,6 +7,23 @@ description: Plan and build a faithful, polished portfolio website for a person,
 
 Turn the user's story, work, and constraints into a working portfolio. Optimize for fidelity first, then craft.
 
+## Hard rules
+
+These requirements bind every run of this skill. Adapt a rule only when it is genuinely impossible to satisfy, and report the adaptation and its reason in the handoff. Silently skipping a rule is a failed task.
+
+- Work through the sections above in order. Complete inspection before editing.
+- Touch only what the request requires. Justify any scope expansion explicitly.
+- Never claim a check ran when it did not, cite a file, line, or result not actually observed, or describe unverified behavior as verified.
+- Re-read the final diff before handoff. Remove debug artifacts, temporary probes, and unrelated changes.
+- Name every added dependency, environment variable, and configuration change in the handoff with the reason for it.
+- Never invent clients, metrics, awards, testimonials, employers, credentials, or project outcomes. Use clearly replaceable placeholders for missing facts and record each one in the handoff.
+- Preserve supplied copy verbatim unless the user asked for editing.
+- Run lint, typecheck, tests, and the production build before handoff; inspect narrow, medium, and wide viewports and complete a keyboard pass over the primary flows.
+
+## Stop and ask
+
+Send one compact intake message before building when any output-changing decision is open. When a missing decision would materially change the site structure, ask about that decision specifically instead of picking a silent default.
+
 ## Collect the brief
 
 If the request leaves an output-changing decision open, ask one compact, structured intake message before building. Do not start by proposing a visual style or by rewriting the brief.
@@ -59,8 +76,8 @@ When the answers are sufficient, proceed without forcing another approval round.
 2. Inspect narrow, medium, and wide viewports, including long project titles and missing or slow media.
 3. Test keyboard navigation, focus visibility, contrast, reduced motion, image alternatives, and external links.
 4. Confirm every user-supplied link and call to action points to the requested destination.
-5. Review the result against the brief. Remove any copy, section, visual treatment, or effect that was not requested or justified by the user's intent.
+5. Review the result against the brief. Remove any copy, section, visual treatment, or effect that was not requested or justified by the user's intent. Verification is a completion gate: record the actual outcome of every check and report failures verbatim.
 
 ## Handoff
 
-Report the implemented routes and files, the assumptions made, any missing user assets or facts, the commands run, and any verification gap. Keep the handoff factual; do not claim polish or functionality that was not exercised.
+Structure the handoff in four labeled parts: (1) What changed: implemented routes and files, and reversible defaults chosen on the behalf of the user. (2) Evidence: commands run with their real outcomes, plus states, viewports, and flows inspected. (3) Gaps: missing user assets or facts, including every placeholder added, and anything not verified. (4) Follow-ups: deferred issues. Do not claim polish or functionality that was not exercised.

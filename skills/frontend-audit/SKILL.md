@@ -7,6 +7,19 @@ description: Audit an existing frontend for usability, visual consistency, respo
 
 Produce a prioritized, evidence-backed review. Do not edit code unless implementation is explicitly requested.
 
+## Hard rules
+
+These requirements bind every run of this skill. Adapt a rule only when it is genuinely impossible to satisfy, and report the adaptation and its reason in the handoff. Silently skipping a rule is a failed task.
+
+- Base every statement on something actually inspected. Never claim a check, file read, route visit, or observation that did not happen.
+- Stay read-only. If the user asks for fixes during the audit, confirm the switch to implementation mode explicitly before editing anything.
+- Give every finding concrete evidence: location, the observed state or viewport, and impact. Label anything not directly observed as a risk needing measurement, never as a defect.
+- Report coverage honestly: which commands, routes, viewports, and tools were exercised, and which were not.
+
+## Stop and ask
+
+Confirm before implementing anything if the user asks for fixes during a read-only audit. Ask when the scope is so broad that sampling choices would materially change the conclusions, so the user can set priorities first.
+
 ## Scope the review
 
 1. Read repository instructions and map the framework, routes, styling system, shared components, and test setup.
@@ -46,8 +59,8 @@ Distinguish confirmed defects from risks that need measurement. Consolidate repe
 
 ## Validate the report
 
-Recheck high-severity findings, remove duplicates, and confirm that recommendations fit the repository's architecture. Report the commands, viewports, routes, and tools exercised, plus any coverage gaps.
+Validation is a completion gate: recheck every high-severity finding against observed evidence before the report is final. Recheck high-severity findings, remove duplicates, and confirm that recommendations fit the repository's architecture. Report the commands, viewports, routes, and tools exercised, plus any coverage gaps.
 
 ## Handoff
 
-Lead with findings ordered by severity. Follow with open questions and a short audit-coverage summary. If no actionable findings remain, say so and identify residual risk or untested areas.
+Lead with findings ordered by severity. Follow with open questions and an explicit coverage summary naming every command, route, viewport, and tool exercised, plus everything not covered and why. Every reported finding must trace back to recorded evidence. If no actionable findings remain, say so and identify residual risk or untested areas.

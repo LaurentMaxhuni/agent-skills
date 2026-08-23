@@ -7,6 +7,23 @@ description: Refine an existing web interface into a cohesive, production-ready 
 
 Improve the interface while preserving its purpose, information architecture, and working behavior.
 
+## Hard rules
+
+These requirements bind every run of this skill. Adapt a rule only when it is genuinely impossible to satisfy, and report the adaptation and its reason in the handoff. Silently skipping a rule is a failed task.
+
+- Work through the sections above in order. Complete inspection before editing.
+- Touch only what the request requires. Justify any scope expansion explicitly.
+- Never claim a check ran when it did not, cite a file, line, or result not actually observed, or describe unverified behavior as verified.
+- Re-read the final diff before handoff. Remove debug artifacts, temporary probes, and unrelated changes.
+- Name every added dependency, environment variable, and configuration change in the handoff with the reason for it.
+- Run the most relevant lint, type, and test commands and treat unexpected failures as blocking.
+- Inspect every changed screen at narrow, medium, and wide viewports, and exercise keyboard focus plus every interactive state touched by the change.
+- Preserve product behavior. A polish pass must not alter information architecture, copy meaning, or working behavior; surface any needed behavior change instead of shipping it silently.
+
+## Stop and ask
+
+Ask before proceeding when achieving the requested look would require changing product behavior, removing or rewriting content, or replacing an existing design system the user chose.
+
 ## Establish the baseline
 
 1. Read repository instructions and identify the framework, design system, styling approach, and relevant routes or components.
@@ -49,8 +66,8 @@ Fix high-leverage primitives before patching many isolated instances.
 2. Inspect changed screens at narrow, medium, and wide viewports.
 3. Exercise keyboard focus and all interactive states touched by the change.
 4. Check long labels, empty data, validation errors, and loading content when those states exist.
-5. Compare the result with the baseline for hierarchy, consistency, and unintended behavior changes.
+5. Compare the result with the baseline for hierarchy, consistency, and unintended behavior changes. Verification is a completion gate: record the actual outcome of every check and report failures verbatim.
 
 ## Handoff
 
-Summarize the design direction, the most important improvements, and the checks performed. Mention any screen or state that could not be exercised.
+Structure the handoff in four labeled parts: (1) What changed: the design direction and the most important improvements. (2) Evidence: checks run with their real outcomes and the screens inspected. (3) Gaps: any screen or state that could not be exercised. (4) Follow-ups: deferred issues. Do not claim polish that was not verified in the rendered interface.

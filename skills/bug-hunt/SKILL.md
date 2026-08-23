@@ -7,6 +7,21 @@ description: Reproduce, isolate, explain, and fix software defects across applic
 
 Move from symptom to evidence to root cause. Do not treat a plausible code smell as the confirmed defect.
 
+## Hard rules
+
+These requirements bind every run of this skill. Adapt a rule only when it is genuinely impossible to satisfy, and report the adaptation and its reason in the handoff. Silently skipping a rule is a failed task.
+
+- Work through the sections above in order. Complete inspection before editing.
+- Touch only what the request requires. Justify any scope expansion explicitly.
+- Never claim a check ran when it did not, cite a file, line, or result not actually observed, or describe unverified behavior as verified.
+- A root cause claim needs support from a reproduction or a discriminating experiment. Label anything less as an unconfirmed hypothesis.
+- Add a regression test that fails before the fix and passes after it. Skip this only when genuinely impractical, and name the reason in the handoff.
+- Run the focused regression, surrounding suite, static checks, and build, and record their actual outcomes. Repeat formerly intermittent reproductions enough to confirm the fix.
+
+## Stop and ask
+
+When reproducing requires access to systems, data, credentials, or environments you do not have, ask rather than assume. Ask before a fix that changes public behavior or an interface beyond repairing the defect.
+
 ## Reproduce
 
 1. Read repository instructions, current changes, and the relevant execution path.
@@ -40,8 +55,8 @@ Avoid weakening assertions, adding arbitrary delays, swallowing errors, or retry
 
 ## Verify
 
-Run the focused regression first, then the relevant surrounding suite, static checks, and build. Repeat formerly intermittent reproductions enough to increase confidence. Inspect the final diff for accidental scope growth.
+Run the focused regression first, then the relevant surrounding suite, static checks, and build. Repeat formerly intermittent reproductions enough to increase confidence. Inspect the final diff for accidental scope growth. Verification is a completion gate: record actual outcomes and report failures verbatim.
 
 ## Handoff
 
-Report the root cause, why the fix addresses it, the regression coverage added, and the exact verification performed. State plainly when the result remains a likely diagnosis rather than a reproduced fix.
+Structure the handoff in four labeled parts: (1) Root cause and why the fix addresses it. (2) Evidence: reproductions, discriminating experiments, and regression coverage with actual results. (3) Verification gap: what could not be reproduced or tested, and why. (4) Residual risk. State plainly when the result remains a likely diagnosis rather than a reproduced fix.

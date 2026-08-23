@@ -7,6 +7,21 @@ description: Restructure existing code to improve boundaries, responsibilities, 
 
 Change structure deliberately while keeping behavior controlled and reviewable.
 
+## Hard rules
+
+These requirements bind every run of this skill. Adapt a rule only when it is genuinely impossible to satisfy, and report the adaptation and its reason in the handoff. Silently skipping a rule is a failed task.
+
+- Work through the sections above in order. Complete inspection before editing.
+- Touch only what the request requires. Justify any scope expansion explicitly.
+- Never claim a check ran when it did not, cite a file, line, or result not actually observed, or describe unverified behavior as verified.
+- Define invariants and checkable success criteria before moving any code. Refactoring without them is out of scope.
+- Keep the code runnable and verify after each meaningful step; never batch the whole movement into a single unverifiable leap.
+- Mix in nothing: no formatting churn, dependency upgrades, unrelated cleanup, or product behavior changes.
+
+## Stop and ask
+
+When success criteria cannot be made checkable with available tests or tooling, agree on how to verify before starting. Get explicit approval before any target shape that changes a public interface or observable behavior.
+
 ## Frame the refactor
 
 1. Read repository instructions and inspect current work before editing.
@@ -45,8 +60,8 @@ Use adapters or temporary compatibility layers when they reduce migration risk, 
 
 ## Verify
 
-Run focused tests throughout, then the relevant full suite, lint, types, and build. Compare important outputs or behavior before and after. Review the final dependency graph and diff for cycles, leaked internals, dead compatibility code, and accidental API change.
+Run focused tests throughout, then the relevant full suite, lint, types, and build. Compare important outputs or behavior before and after. Review the final dependency graph and diff for cycles, leaked internals, dead compatibility code, and accidental API change. Verification is a completion gate: run focused checks after every meaningful step and record actual outcomes.
 
 ## Handoff
 
-Describe the old and new boundaries, the preserved invariants, migration or compatibility decisions, and the checks performed. Call out follow-up work only when it is genuinely outside the agreed scope.
+Structure the handoff in four labeled parts: (1) What changed: the old and new boundaries and preserved invariants. (2) Evidence: checks run after each step with outcomes, and diff review results. (3) Gaps: invariants or behaviors no check covered. (4) Follow-ups: only work genuinely outside the agreed scope.

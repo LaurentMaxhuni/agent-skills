@@ -7,6 +7,19 @@ description: Audit and improve practical web accessibility, including semantics,
 
 Make the interface more usable with standards-based HTML and established platform behavior. Treat a request to audit as read-only; implement changes when the user asks to improve or fix.
 
+## Hard rules
+
+These requirements bind every run of this skill. Adapt a rule only when it is genuinely impossible to satisfy, and report the adaptation and its reason in the handoff. Silently skipping a rule is a failed task.
+
+- Complete the primary user flow with the keyboard alone after the last structural change. This check is mandatory, not best-effort.
+- Run the configured automated accessibility checks and relevant tests; automated success never substitutes for keyboard and semantic inspection.
+- Never state or imply WCAG conformance from this pass. Report standards only as targets unless a complete, qualified assessment was performed.
+- When auditing, stay read-only until asked to implement; when fixing, re-check accessible names and focus after each structural change.
+
+## Stop and ask
+
+Ask when the conformance target or assistive-technology support scope is unstated and would change what the pass covers. Confirm the switch before implementing anything if the request begins as an audit.
+
 ## Establish context
 
 1. Read repository instructions and identify supported browsers, component libraries, test tools, and any stated conformance target.
@@ -48,8 +61,8 @@ Check:
 4. Check narrow reflow, zoom, reduced motion, errors, loading, and empty states.
 5. Recheck accessible names and focus after every structural change.
 
-Automated success does not establish WCAG conformance. Report the standard and level only as a target unless a complete, qualified conformance assessment was performed.
+Automated success does not establish WCAG conformance. Report the standard and level only as a target unless a complete, qualified conformance assessment was performed. Verification is a completion gate: the keyboard-only flow completion and every check above must have recorded outcomes before this work is done, with failures reported verbatim.
 
 ## Handoff
 
-List fixed or observed issues by user impact, name the manual and automated checks performed, and state untested assistive-technology or conformance gaps.
+Structure the handoff in four labeled parts: (1) Findings: fixed or observed issues ordered by user impact. (2) Evidence: manual and automated checks performed with their real outcomes. (3) Gaps: untested assistive technologies, content, or flows. (4) Limits: state plainly that this pass does not establish WCAG conformance.

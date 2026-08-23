@@ -7,6 +7,21 @@ description: Diagnose and fix responsive web layout defects across mobile, table
 
 Repair responsive behavior from the layout system outward. Avoid accumulating viewport-specific patches.
 
+## Hard rules
+
+These requirements bind every run of this skill. Adapt a rule only when it is genuinely impossible to satisfy, and report the adaptation and its reason in the handoff. Silently skipping a rule is a failed task.
+
+- Work through the sections above in order. Complete inspection before editing.
+- Touch only what the request requires. Justify any scope expansion explicitly.
+- Never claim a check ran when it did not, cite a file, line, or result not actually observed, or describe unverified behavior as verified.
+- Reproduce the failure and record the width where behavior breaks before editing. Never ship speculative fixes for a problem you did not observe.
+- After fixing, sweep continuously across widths, test zoom and height-sensitive orientations, and confirm keyboard focus stays visible and unobscured.
+- Run relevant lint, type, and test commands and treat unexpected failures as blocking.
+
+## Stop and ask
+
+When the failure cannot be reproduced, ask for the environment, viewport, and reproduction steps instead of guessing. Ask before dropping essential content or actions at any supported width.
+
 ## Reproduce the failure
 
 1. Read repository instructions and identify the page shell, layout primitives, breakpoints, and styling conventions.
@@ -47,8 +62,8 @@ Prefer fluid sizing, intrinsic layout, wrapping, `minmax()`, container-aware beh
 3. Test browser zoom or an equivalently reduced CSS viewport.
 4. Exercise long labels, unbroken strings, empty states, errors, and dynamic content.
 5. Confirm keyboard focus remains visible and unobscured.
-6. Run relevant lint, type, and test commands.
+6. Run relevant lint, type, and test commands. Verification is a completion gate: record the actual outcome of every check and report failures verbatim.
 
 ## Handoff
 
-Describe the root cause, the layout rule changed, the viewport range verified, and any remaining device-specific gap.
+Structure the handoff in four labeled parts: (1) What changed: the root cause and the layout rule corrected. (2) Evidence: the breaking width reproduced, the viewport range swept, zoom and orientation results, and check outcomes. (3) Gaps: device-specific conditions not verified. (4) Follow-ups: deferred issues. Do not claim verification at viewports you did not inspect.

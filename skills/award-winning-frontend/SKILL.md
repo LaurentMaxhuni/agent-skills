@@ -19,6 +19,23 @@ Before implementation, ask one compact intake message if the request is missing 
 
 Proceed when the intent is clear. Do not silently rewrite supplied copy, invent brand claims, or choose an unrelated visual direction. If the user is building a portfolio, pair this skill with `portfolio-maker` when both intake fidelity and advanced motion are needed.
 
+## Hard rules
+
+These requirements bind every run of this skill. Adapt a rule only when it is genuinely impossible to satisfy, and report the adaptation and its reason in the handoff. Silently skipping a rule is a failed task.
+
+- Work through the sections above in order. Complete inspection before editing.
+- Touch only what the request requires. Justify any scope expansion explicitly.
+- Never claim a check ran when it did not, cite a file, line, or result not actually observed, or describe unverified behavior as verified.
+- Re-read the final diff before handoff. Remove debug artifacts, temporary probes, and unrelated changes.
+- Name every added dependency, environment variable, and configuration change in the handoff with the reason for it.
+- Verify library APIs and versions against current official documentation or installed package metadata before coding; never guess them from memory.
+- Run lint, typecheck, tests, and the production build before handoff and treat failures as blocking, not advisory.
+- Exercise the primary path with keyboard and pointer or touch input at representative viewports, and inspect reduced-motion behavior and the 3D fallback before claiming completion.
+
+## Stop and ask
+
+Send one compact intake message before building when a required brand asset, exact copy, or output-changing decision is missing; when requested motion intensity conflicts with stated performance or accessibility constraints; or when meeting the brief requires a new dependency the user has not approved.
+
 ## Inspect the current stack
 
 1. Read repository instructions, package manifests, lockfiles, routes, shared components, tokens, and existing media.
@@ -82,6 +99,8 @@ Use a single motion language: consistent easing, duration families, stagger rule
 4. Check that every effect has a job, every font and icon choice is consistent, and no decorative layer competes with content or calls to action.
 5. Remove generic gradients, random glass cards, excessive bounces, duplicated dependencies, and effects that do not survive mobile or accessibility review.
 
+Verification is a completion gate. This work is not done until the checks above ran and their real outcomes are recorded; report failures verbatim rather than softening them.
+
 ## Handoff
 
-Summarize the art direction, libraries and font/icon sources selected, key motion systems, responsive and reduced-motion behavior, performance checks, commands run, and any unverified browser or device gap.
+Structure the handoff in four labeled parts: (1) What changed: art direction, libraries and font or icon sources selected, key motion systems. (2) Evidence: commands run with outcomes, performance measurements taken, states and viewports inspected. (3) Gaps: unverified browsers, devices, or conditions. (4) Follow-ups: deferred risks. Do not claim polish or performance that was not measured or exercised.
