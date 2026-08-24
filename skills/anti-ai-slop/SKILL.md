@@ -1,6 +1,6 @@
 ---
 name: anti-ai-slop
-description: Create or refine frontend interfaces so they feel intentional, distinctive, and human-made instead of generic AI-generated UI. Use when a user asks for anti-slop design, a less AI-looking interface, or a strict visual critique and implementation pass.
+description: Create or refine frontend interfaces so they feel intentional, distinctive, and human-made instead of generic AI-generated UI. Use when a user asks for anti-slop design, a less AI-looking interface, or a strict visual critique and implementation pass. Includes a curated toolbox of vetted UI, motion, icon, typography, color, and data-viz libraries.
 ---
 
 # Anti-AI Slop
@@ -42,6 +42,89 @@ Ask before proceeding when the requested direction conflicts with a hard visual 
 - **Make clickable controls look clickable.** Set `cursor: pointer` on buttons, links, and custom clickable controls. Keep appropriate `default`, `not-allowed`, or other state-specific cursors for noninteractive and disabled elements; do not apply pointer cursors to decorative containers. Cursor feedback complements, never replaces, keyboard focus and other visible interaction states.
 - **Give visual changes motion.** Define a consistent duration and easing system, then apply it to relevant interactive and state-changing elements: links, buttons, inputs, menus, dialogs, cards, accordions, validation, loading, hover, focus, active, and page or section reveals. Use transform and opacity where possible; avoid `transition: all`, random durations, perpetual motion, and motion that delays access to content. A static element does not need gratuitous animation, but every meaningful visual state change should have a considered transition or an equally clear reduced-motion treatment.
 - **Honor reduced motion.** Respect `prefers-reduced-motion`. Remove or substantially reduce nonessential movement while keeping state changes, focus, loading, and hierarchy understandable. Never make essential information depend on an animation completing.
+
+## Choose the tools
+
+Prefer the platform before any dependency. Modern CSS already covers most needs at zero bundle cost: transitions and keyframes, `linear()` spring-like easing, scroll-driven `animation-timeline`, View Transitions API, container queries, `color-mix()`, and OKLCH color. Add a library only when hand-rolling would cost accessibility, correctness, or quality; match the stack already present in the repository before importing anything new; name every added dependency in the handoff. Picks tagged React assume React 18+; everything else is multi-framework or vanilla.
+
+### Headless primitives
+
+Unstyled accessible behavior that you style is the default over themed kits whose stock look reads as template.
+
+- **Base UI** — MUI-maintained, most actively developed primitive layer today, current shadcn/ui foundation. React.
+- **Radix UI** — the battle-tested standard; ubiquitous though slower-moving since the WorkOS acquisition. React.
+- **React Aria Components / hooks** — deepest WAI-ARIA and i18n coverage; use when accessibility is contractual. React.
+- **Ark UI** — Zag.js state machines shared across React, Vue, and Solid from one codebase.
+- **Ariakit** — small bundles, component/hook hybrid. React.
+- **Headless UI** — small official Tailwind Labs set. React and Vue.
+- **shadcn/ui** — copy-in components over Base UI/Radix plus Tailwind styles. Accept only as scaffolding restyled to the art direction; its stock zinc-neutral palette and uniform rounded cards are themselves slop tells.
+
+### Motion
+
+Order of preference: CSS first, one engine second, never two engines doing the same job.
+
+- **CSS** — hover/focus/state transitions and keyframe reveals; `linear()` easing for spring feel; native scroll-driven animations where the browser matrix allows.
+- **GSAP** — timelines, ScrollTrigger, SplitText, Draggable, CustomEase; free including plugins since 3.13. The choice when choreography defines the page. All frameworks.
+- **Motion** (`motion/react`; formerly Framer Motion) — variants, `AnimatePresence` enter/exit, layout animation inside React trees.
+- **anime.js v4** — modular lightweight tweens. All frameworks.
+- **react-spring** — physics-based motion. React.
+- **Lenis** — momentum smooth-scroll layer beneath GSAP ScrollTrigger; animates nothing itself.
+- **Rive / Lottie** — designer-authored animation; Rive for interactive state machines, Lottie for self-contained loops.
+- Vet every choice against `prefers-reduced-motion` before adopting it. A library without a reduced-motion story fails this skill's rules.
+
+### Icons
+
+One family per project, no emoji as interface icons, no mixing stroke and fill families.
+
+- **Lucide** — ~1,700 stroke icons, cleanest tree-shaking, most active maintenance.
+- **Phosphor** — six weights usable as a design token from Thin to Bold plus Duotone.
+- **Tabler** — ~5,000 icons for wide domain coverage.
+- **Heroicons**, **Iconoir**, **Radix Icons** — coherent smaller sets; Heroicons suits Tailwind projects.
+- **Iconify** — meta-access to every major set when one family cannot cover the domain; treat as an exception, not a default.
+
+### Typography
+
+Never the banned faces (`Inter`, `Space Grotesk`, `Poppins`, `Geist`). At most two families with clear roles; load only needed weights, preferably variable.
+
+- **Fontshare** (free): Satoshi, General Sans, Switzer for text sans; Cabinet Grotesk and Clash Display for display; Gambetta and Zodiak for serif or editorial voice.
+- Distinctive Google Fonts: Bricolage Grotesque, Instrument Serif, Instrument Sans, Fraunces, Newsreader, Source Serif 4, Sora, Schibsted Grotesk, Hanken Grotesk, Archivo.
+- Monospace only when code or data justifies it: JetBrains Mono, IBM Plex Mono, Fragment Mono.
+- Self-host through **Fontsource** rather than runtime font CDN requests.
+
+### Color and tokens
+
+- Work in **OKLCH**: perceptually even scales, hue stable under lightness changes, Baseline across browsers. Derive ramps from one base token with `color-mix(in oklch, ...)`.
+- **Tailwind v4** — CSS-first `@theme` tokens; override the default palette, whose stock hues are themselves a slop tell.
+- **Open Props** — framework-agnostic token sets including easings, sizes, and borders.
+- **Radix Colors** — accessible step scales when rolling your own would be wasteful.
+- Validate foreground/background pairs against WCAG AA minimum; use APCA where precision matters.
+
+### Interaction utilities
+
+- **Floating UI** — tooltip and popover positioning when no primitive library is present. Vanilla core with framework adapters.
+- **Embla** — unstyled carousel you skin entirely. JavaScript core with React, Vue, and Svelte packages.
+- **Vaul** — drawer primitive. React. Restyle before shipping.
+
+### Data visualization
+
+Charts must be themed into the system; any chart-library default look is slop.
+
+- **visx** — composable low-level charting primitives over D3. React.
+- **Observable Plot** — concise declarative plots. Vanilla.
+- **ECharts** — feature-complete canvas charts when theming depth is required.
+- **D3** directly — full control at the highest effort.
+
+### Spatial and 3D
+
+Use only when the art direction genuinely calls for depth. Generic particle fields, floating blobs, and glow scenes remain banned patterns regardless of implementation quality.
+
+- **Three.js**, or **React Three Fiber** as its React renderer, for real 3D scenes.
+- **OGL** for a lighter WebGL abstraction.
+- Degrade to static imagery under reduced motion, touch-only, and low-power contexts.
+
+### Slop tells that return through defaults
+
+Enforce the hard visual rules against compiled output even after your own CSS is clean: stock shadcn/ui palettes and radii, unthemed Material UI or Ant Design chrome, Tailwind default-palette hues, chart-library default colors, icon families mixed through Iconify convenience, and WebGL particle or glow backdrops.
 
 ## Implement the system
 

@@ -18,6 +18,7 @@ These requirements bind every run of this skill. Adapt a rule only when it is ge
 - Name every added dependency, vendored asset, and pinned URL in the handoff with its source and reason.
 - Run lint, typecheck, and tests, or serve the page locally and check the console and network panel for errors before handoff.
 - Exercise previous and next controls, pagination, keyboard shortcuts, touch swipe, and direct selection until state stays correct after repeated navigation.
+- Ship an export feature that saves every slide as a high-quality image: all slides, not only the active one, captured at the post's true target-ratio resolution with a device-pixel ratio of 2 or more, lossless PNG output, and predictable filenames (`slide-01.png`, `slide-02.png`, ...).
 - Never ship emoji as interface icons, mixed icon families, fabricated logos or SVGs, or invented engagement numbers and testimonials.
 
 ## Stop and ask
@@ -69,6 +70,7 @@ When the request calls for HTML, CSS, and JavaScript, deliver them as understand
 - Do not autoplay by default. If autoplay is requested, provide pause/resume, pause when the document is hidden, stop on interaction, and honor `prefers-reduced-motion`.
 - Announce meaningful slide changes without creating noisy screen-reader output. Keep pagination text, `aria-current`, disabled or looped control state, and the live region synchronized.
 - Handle missing, slow, or broken media intentionally. Reserve dimensions, provide useful fallback styling, and do not let an image error collapse the composition.
+- Build the slide-export path on the same data model: render each slide into an offscreen capture sized to the reserved aspect ratio, wait for `document.fonts.ready` and image decode before capture, and save each frame through `canvas.toBlob` as PNG. Prefer native canvas or SVG `foreignObject` serialization; add a capture library only when fidelity demands it, vendor it locally, and record it in the handoff. External media must be CORS-clean or vendored so the canvas does not taint. Surface progress, completion, and failure states in the interface, and give the export control an accessible name.
 - Keep data, state transitions, and DOM updates small and inspectable. Avoid a monolithic event handler and avoid adding a dependency for behavior that a few tested lines of JavaScript can provide.
 
 ## Build a visual system from evidence
@@ -97,12 +99,13 @@ When the request calls for HTML, CSS, and JavaScript, deliver them as understand
 ## Verify the result
 
 1. Run the relevant lint, typecheck, tests, and production build or serve the static page through a local server.
-2. Exercise previous/next, dots, keyboard shortcuts, touch swipe, direct selection, and every enabled action. Confirm the active state and announcement stay correct after repeated navigation.
+2. Exercise previous/next, dots, keyboard shortcuts, touch swipe, direct selection, the export control, and every enabled action. Confirm the active state and announcement stay correct after repeated navigation.
 3. Inspect at narrow phone widths, `1:1` and `4:5` media ratios, tablet, desktop, landscape, zoom, long captions, missing media, and reduced-motion mode.
 4. Check keyboard order, visible focus, accessible names, contrast, touch target size, text clipping, and whether essential content is available without hover or animation.
-5. Check the console and network panel for errors, verify icons render from the intended source, and remove dead code, unused dependencies, and unverified external assets.
-6. Inspect the finished interface as a visual artifact at the target size. Replace any hand-made or visibly low-quality SVG, fake logo, generic placeholder image, boxy nesting, or unintentional template treatment before handoff. These checks are a completion gate: record their actual outcomes and report failures verbatim.
+5. Export every slide through the shipped feature. Confirm one correctly named file per slide, open the first and last exports at full size to check for missing fonts, broken media, clipped text, or color shifts, and confirm dimensions match the target ratio at the promised pixel ratio.
+6. Check the console and network panel for errors, verify icons render from the intended source, and remove dead code, unused dependencies, and unverified external assets.
+7. Inspect the finished interface as a visual artifact at the target size. Replace any hand-made or visibly low-quality SVG, fake logo, generic placeholder image, boxy nesting, or unintentional template treatment before handoff. These checks are a completion gate: record their actual outcomes and report failures verbatim.
 
 ## Handoff
 
-Structure the handoff in four labeled parts: (1) What changed: the art direction and its sources, the carousel data model, interaction behavior, and icon libraries or vendored assets used. (2) Evidence: commands run with outcomes, interactions exercised, viewports and ratios checked, console and network results. (3) Gaps: unverified devices, missing assets, or absent backend integration. (4) Follow-ups: deferred issues. Do not claim interactions or asset quality that were not exercised.
+Structure the handoff in four labeled parts: (1) What changed: the art direction and its sources, the carousel data model, interaction and export behavior, and icon libraries or vendored assets used. (2) Evidence: commands run with outcomes, interactions exercised, viewports and ratios checked, console and network results. (3) Gaps: unverified devices, missing assets, or absent backend integration. (4) Follow-ups: deferred issues. Do not claim interactions or asset quality that were not exercised.
