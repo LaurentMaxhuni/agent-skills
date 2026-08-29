@@ -12,6 +12,7 @@ A focused collection of reusable skills for improving software quality. Each ski
 | [`award-winning-frontend`](skills/award-winning-frontend/SKILL.md) | Creating high-craft frontends with typography, 3D, and purposeful motion |
 | [`anti-ai-slop`](skills/anti-ai-slop/SKILL.md) | Removing generic AI patterns from frontend design |
 | [`carousel-maker`](skills/carousel-maker/SKILL.md) | Building functional Instagram-style post carousels in HTML, CSS, and JavaScript |
+| [`legal-pages`](skills/legal-pages/SKILL.md) | Adding privacy, terms, cookie, and other legal pages as review-ready templates |
 | [`frontend-polish`](skills/frontend-polish/SKILL.md) | Refining visual hierarchy, consistency, interaction states, and perceived quality |
 | [`frontend-audit`](skills/frontend-audit/SKILL.md) | Producing an evidence-backed frontend quality review without silently changing code |
 | [`responsive-fixer`](skills/responsive-fixer/SKILL.md) | Diagnosing and fixing layout failures across viewport sizes and input modes |

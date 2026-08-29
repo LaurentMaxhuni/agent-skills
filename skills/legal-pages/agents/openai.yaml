@@ -1,0 +1,4 @@
+interface:
+  display_name: "Legal Pages"
+  short_description: "Add privacy, terms, and legal pages to a website"
+  default_prompt: "Use $legal-pages to add the legal pages this website needs, wired into its routing and footer, as templates ready for legal review."
