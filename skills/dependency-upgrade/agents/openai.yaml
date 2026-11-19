@@ -1,0 +1,4 @@
+interface:
+  display_name: "Dependency Upgrade"
+  short_description: "Upgrade a dependency and check its impact"
+  default_prompt: "Use $dependency-upgrade to upgrade this dependency, apply the needed migration steps, and verify the lockfile and affected behavior."

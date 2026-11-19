@@ -1,0 +1,4 @@
+interface:
+  display_name: "API Contract Change"
+  short_description: "Keep API contracts and consumers in sync"
+  default_prompt: "Use $api-contract-change to make this API change and verify the contract, implementation, and affected consumers together."

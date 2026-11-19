@@ -1,0 +1,4 @@
+interface:
+  display_name: "Design System Adoption"
+  short_description: "Build with existing components and tokens"
+  default_prompt: "Use $design-system-adoption to build or migrate these screens using the project's existing components and tokens."

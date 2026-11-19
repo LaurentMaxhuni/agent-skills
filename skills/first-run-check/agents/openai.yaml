@@ -1,0 +1,4 @@
+interface:
+  display_name: "First-Run Check"
+  short_description: "Verify onboarding from a clean checkout"
+  default_prompt: "Use $first-run-check to follow this project's quickstart and verify that a new contributor can get it running."

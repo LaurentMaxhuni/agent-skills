@@ -1,17 +1,23 @@
 ---
 name: legal-pages
-description: Plan, generate, and wire in the legal pages a website needs, including a Privacy Policy, Terms of Service, and Cookie Policy as the core set, plus optional Acceptable Use, Disclaimer, and EULA modules. Use when a user asks to add legal pages, terms, a privacy or cookie policy, or footer legal links to a new or existing site. Produces clearly marked templates that must be reviewed by a qualified lawyer, never presents generated text as legal advice, and never invents company facts or jurisdictions.
+description: Draft and wire in requested website legal pages, add links to existing policies, or plan a page set when the user asks for broad legal coverage. Use for privacy policies, terms, cookie policies, Acceptable Use, disclaimers, EULAs, and legal footer links. Mark drafted pages as templates for lawyer review and preserve supplied company facts and jurisdictions.
 ---
 
 # Legal Pages
 
 Add the legal pages a website actually needs, wired into its routing and navigation, as clearly marked templates ready for legal review.
 
+## Choose the scope
+
+- For a link-only request, find the existing page or use the supplied URL. Add the requested link in the designated location, check its destination, and report the change. If you cannot identify the destination, ask for the URL. Skip policy intake and page generation.
+- For a request naming specific pages, draft or update only those pages and wire them into the site. Collect only the facts needed for the requested text.
+- When the user asks for legal pages generally, inspect the site and use Select the page set to decide which pages are needed.
+
 ## Hard rules
 
 These requirements bind every run of this skill. Adapt a rule only when it is genuinely impossible to satisfy, and report the adaptation and its reason in the handoff. Silently skipping a rule is a failed task.
 
-- Work through the sections above in order. Complete inspection before editing.
+- Complete the inspection relevant to the request before editing.
 - Touch only what the request requires. Justify any scope expansion explicitly.
 - Never claim a check ran when it did not, cite a file, line, or result not actually observed, or describe unverified behavior as verified.
 - Re-read the final diff before handoff. Remove debug artifacts, temporary probes, and unrelated changes.
@@ -25,11 +31,11 @@ These requirements bind every run of this skill. Adapt a rule only when it is ge
 
 ## Stop and ask
 
-Send one compact intake message before writing when any output-changing decision is open. When a missing decision would materially change the page set or a clause's substance, ask about that decision specifically instead of picking a silent default.
+Inspect the site before asking for facts it may already provide. If a missing fact would materially change the requested page set or a clause's substance, ask about that fact in one compact intake message before drafting.
 
 ## Collect the brief
 
-If the request leaves an output-changing decision open, ask one compact, structured intake message before writing. Ask only for information that changes the result:
+For requested policy text, use the facts already supplied or confirmed in the site. Limit intake to facts needed for that text:
 
 - Legal entity or site owner name, and a contact point for privacy and legal inquiries
 - Applicable jurisdictions: where the site operates, targets users, or is established
@@ -51,7 +57,9 @@ When the answers are sufficient, proceed without forcing another approval round.
 
 ## Select the page set
 
-- Always generate a Privacy Policy and Terms of Service.
+Use these defaults only when the user asks for a general legal-page set. Reuse existing pages that already meet the brief.
+
+- Include a Privacy Policy and Terms of Service in the general set.
 - Generate a Cookie Policy when the site sets cookies or loads tracking or embedding scripts; otherwise record the exclusion and its reason.
 - Add the Acceptable Use module when users can post, upload, or communicate; the Disclaimer module when the site provides informational, professional, or opinion content; the EULA module when the product ships installable or licensed software. Justify each included or excluded module against the inspection evidence.
 - Do not add filler pages to imitate a template. Every generated page must map to a stated need or intake answer.
@@ -66,7 +74,7 @@ When the answers are sufficient, proceed without forcing another approval round.
 
 ## Wire them in
 
-- Create routes consistent with the site's URL conventions, such as `/privacy`, `/terms`, and `/cookies`, unless the intake specifies otherwise.
+- Use the site's URL conventions for routes such as `/privacy`, `/terms`, and `/cookies`, unless the intake specifies otherwise. If the site has a page or route generator, run it before adding the legal content. Follow [CLI scaffolding](../cli-scaffolding/SKILL.md) when available.
 - Link every generated page from the footer or the equivalent persistent location, reusing the existing layout and link components.
 - Add correct document titles and metadata for each page when the stack supports it.
 - Add a consent banner only when the intake or inspection established that one is required and the user asked for it; otherwise record it as a follow-up.
@@ -81,4 +89,4 @@ When the answers are sufficient, proceed without forcing another approval round.
 
 ## Handoff
 
-Structure the handoff in four labeled parts: (1) What changed: generated pages, routes, links, and reversible defaults chosen on the behalf of the user, plus an explicit statement that the pages are templates, not legal advice. (2) Evidence: commands run with their real outcomes, plus pages visited and links checked. (3) Gaps: every placeholder added, any jurisdiction the generated text does not reliably cover, and anything not verified. (4) Follow-ups: deferred issues, such as consent banners or module pages excluded by choice. Do not claim legal completeness that was not established.
+Report the requested changes and the checks performed. For link-only work, include the destination and whether it resolved. For drafted policies, identify them as templates for lawyer review and list placeholders, jurisdiction gaps, and any requested verification you could not complete.

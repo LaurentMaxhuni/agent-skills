@@ -1,22 +1,26 @@
 ---
 name: bug-hunt
-description: Reproduce, isolate, explain, and fix software defects across application code, tests, integrations, and runtime behavior. Use for regressions, crashes, incorrect output, race conditions, flaky tests, intermittent failures, and requests to find a bug's root cause. Add focused regression coverage and avoid unrelated refactoring.
+description: Reproduce, isolate, and explain software defects across application code, tests, integrations, and runtime behavior. Use for regressions, crashes, incorrect output, race conditions, flaky tests, intermittent failures, and root-cause investigations. Apply a focused fix and regression check when the user requests a repair.
 ---
 
 # Bug Hunt
 
 Move from symptom to evidence to root cause. Do not treat a plausible code smell as the confirmed defect.
 
+## Choose the scope
+
+For a diagnosis-only request, reproduce and isolate the issue using read-only inspection and existing diagnostics. Then report the cause or the best-supported hypothesis, the evidence, and any verification gaps. Stop there. Proceed to Fix and Verify when the user requests a repair.
+
 ## Hard rules
 
 These requirements bind every run of this skill. Adapt a rule only when it is genuinely impossible to satisfy, and report the adaptation and its reason in the handoff. Silently skipping a rule is a failed task.
 
-- Work through the sections above in order. Complete inspection before editing.
+- Complete inspection and isolate the cause before editing to fix the defect.
 - Touch only what the request requires. Justify any scope expansion explicitly.
 - Never claim a check ran when it did not, cite a file, line, or result not actually observed, or describe unverified behavior as verified.
 - A root cause claim needs support from a reproduction or a discriminating experiment. Label anything less as an unconfirmed hypothesis.
-- Add a regression test that fails before the fix and passes after it. Skip this only when genuinely impractical, and name the reason in the handoff.
-- Run the focused regression, surrounding suite, static checks, and build, and record their actual outcomes. Repeat formerly intermittent reproductions enough to confirm the fix.
+- When fixing, add a regression test that fails before the fix and passes after it. Skip this only when genuinely impractical, and name the reason in the handoff.
+- To verify a fix, run the focused regression, surrounding suite, static checks, and build, and record their actual outcomes. Repeat formerly intermittent reproductions enough to confirm the fix.
 
 ## Stop and ask
 
@@ -37,7 +41,7 @@ If reproduction is blocked, continue with safe inspection and clearly label hypo
 - Reduce the input, code path, or dependency set while preserving the failure.
 - Compare working and failing cases.
 - Check recent diffs and history when they can identify a regression boundary.
-- Instrument narrow boundaries with temporary diagnostics when needed; do not leave noisy logging or sensitive data behind.
+- When the user requests a repair, add temporary diagnostics at narrow boundaries if needed. Remove those diagnostics before handoff.
 - For concurrency bugs, reason about ordering, ownership, cancellation, retries, idempotency, and shared state.
 - For flaky tests, distinguish a product race from leaked test state, nondeterministic data, timing assumptions, or infrastructure noise.
 
@@ -59,4 +63,4 @@ Run the focused regression first, then the relevant surrounding suite, static ch
 
 ## Handoff
 
-Structure the handoff in four labeled parts: (1) Root cause and why the fix addresses it. (2) Evidence: reproductions, discriminating experiments, and regression coverage with actual results. (3) Verification gap: what could not be reproduced or tested, and why. (4) Residual risk. State plainly when the result remains a likely diagnosis rather than a reproduced fix.
+Report the root cause or unconfirmed hypothesis, the evidence for it, any verification gaps, and residual risk. When a repair was requested, also describe the fix, how it addresses the cause, and the actual regression check results.

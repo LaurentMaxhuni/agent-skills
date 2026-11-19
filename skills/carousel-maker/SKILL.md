@@ -63,6 +63,8 @@ The carousel, post chrome, controls, and responsive behavior are all part of the
 
 When the request calls for HTML, CSS, and JavaScript, deliver them as understandable source files with a clear entry point. Preserve an existing framework when the repository already has one, but do not silently replace a requested vanilla implementation with a framework.
 
+Write a requested self-contained HTML carousel directly. If the carousel needs a new project setup, run the stack's supported initializer before writing it. In an existing project, run its page or component generator when it provides one for the requested work. Follow [CLI scaffolding](../cli-scaffolding/SKILL.md) when available.
+
 - Use semantic landmarks and buttons for controls. Keep the active slide, pagination, and control state in JavaScript rather than relying on fragile CSS-only tricks.
 - Implement previous/next controls, pagination indicators, and direct slide selection. Support `ArrowLeft`, `ArrowRight`, `Home`, and `End`; keep focus visible and move focus intentionally when a user selects a slide.
 - Support touch swipes with a sensible threshold and pointer input where appropriate. Prevent accidental clicks after a drag, avoid hijacking page scrolling, and provide a non-gesture path for every action.

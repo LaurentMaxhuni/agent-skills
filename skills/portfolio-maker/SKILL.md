@@ -49,7 +49,7 @@ When the answers are sufficient, proceed without forcing another approval round.
 ## Inspect before building
 
 1. Read repository instructions and identify the framework, routes, styling approach, shared components, assets, and available scripts.
-2. Decide whether to extend the existing app or create the smallest compatible site structure. Preserve working architecture and dependencies.
+2. Extend the existing app when it fits. Preserve working architecture and dependencies. Write a requested standalone HTML portfolio directly. If the portfolio needs a new project setup, run the stack's supported initializer before building it. For project setup and generator-managed files, follow [CLI scaffolding](../cli-scaffolding/SKILL.md) when available.
 3. Run the interface when practical. Inspect the current baseline, representative routes, and supplied assets before changing them.
 4. Convert the brief into a short page map and content map. Remove template sections that do not serve the user's goal.
 

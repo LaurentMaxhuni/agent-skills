@@ -8,6 +8,13 @@ A focused collection of reusable skills for improving software quality. Each ski
 
 | Skill | Use it for |
 | --- | --- |
+| [`cli-scaffolding`](skills/cli-scaffolding/SKILL.md) | Running supported CLI generators for projects, workspace packages, integrations, and framework-managed files |
+| [`feature-wiring`](skills/feature-wiring/SKILL.md) | Connecting a feature to its real app entry point and verifying its behavior end to end |
+| [`dependency-upgrade`](skills/dependency-upgrade/SKILL.md) | Upgrading a dependency with its migrations, lockfile, and affected behavior checked |
+| [`ci-failure-triage`](skills/ci-failure-triage/SKILL.md) | Tracing a failed CI run to its cause and reproducing the failing step |
+| [`api-contract-change`](skills/api-contract-change/SKILL.md) | Updating an API contract, implementation, generated clients, and consumers together |
+| [`first-run-check`](skills/first-run-check/SKILL.md) | Testing documented onboarding and confirming startup from a clean checkout |
+| [`design-system-adoption`](skills/design-system-adoption/SKILL.md) | Building or migrating scoped screens with existing components, tokens, and themes |
 | [`portfolio-maker`](skills/portfolio-maker/SKILL.md) | Building a faithful portfolio from a user's content, assets, and goals |
 | [`award-winning-frontend`](skills/award-winning-frontend/SKILL.md) | Creating high-craft frontends with typography, 3D, and purposeful motion |
 | [`anti-ai-slop`](skills/anti-ai-slop/SKILL.md) | Removing generic AI patterns from frontend design |
@@ -50,6 +57,7 @@ For Codex, a typical user-level destination is:
 Invoke a skill explicitly when you want predictable routing:
 
 ```text
+Use $cli-scaffolding to initialize this project with the framework's CLI.
 Use $bug-hunt to reproduce and fix the intermittent checkout failure.
 Use $frontend-audit to review this dashboard and prioritize the findings.
 ```

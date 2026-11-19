@@ -1,0 +1,4 @@
+interface:
+  display_name: "Feature Wiring"
+  short_description: "Connect a feature and verify its real entry point"
+  default_prompt: "Use $feature-wiring to connect this feature to its intended services and verify it through the app's normal entry point."
